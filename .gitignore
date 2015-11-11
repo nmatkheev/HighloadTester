@@ -1,0 +1,12 @@
+# IDE IGNORES
+.vscode
+.idea
+
+# VIRTUAL ENV IGNORES
+venv
+
+# COMPILE FILES IGNORES
+*.pyc
+
+# LOG IGNORES
+*.log

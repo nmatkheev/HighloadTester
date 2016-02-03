@@ -1,0 +1,8 @@
+FROM debian
+MAINTAINER mephidude <sie.inject@gmail.com>
+LABEL Description="This image is used to start the Backend node" Vendor="Mephidude" Version="1.0"
+
+ADD backend /backend/
+RUN apt-get update && apt-get install -y python3 python3-dev python3-pip
+RUN pip3 install requests
+RUN chmod +x /backend/backend.py

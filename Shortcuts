@@ -1,0 +1,2 @@
+Remove all containers:     docker rm $(docker ps -aq)
+Remove images by id, name: docker rmi

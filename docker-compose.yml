@@ -1,0 +1,40 @@
+version: '2'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile_Front
+    command: python3 /frontend/frontend.py 0.0.0.0 8000
+    labels:
+      - frontend
+    volumes:
+      - ./hostdata:/hostdata
+      - ./frontend:/frontend
+    expose:
+      - 8000
+    links:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile_Back
+    command: python3 /backend/backend.py 0.0.0.0 9000
+    labels:
+      - backend
+    volumes:
+      - ./hostdata:/hostdata
+      - ./backend:/backend
+    expose:
+      - 9000
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile_Client
+    command: python3 /client/client.py http://172.19.0.7:8000
+    labels:
+      - client
+    volumes:
+      - ./hostdata:/hostdata
+      - ./client:/client

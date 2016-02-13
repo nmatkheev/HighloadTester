@@ -1,0 +1,12 @@
+version: '2'
+services:
+  client:
+      build:
+        context: .
+        dockerfile: Dockerfile_Client
+      command: python3 /client/client.py http://172.19.0.3:8000
+      labels:
+        - client
+      volumes:
+        - ../hostdata:/hostdata
+        - ../client:/client
